@@ -7,7 +7,13 @@
 <body>
 
   Welcome <?php
- 
-  echo $_GET["nationalid"]; ?>
+$bola=$_GET["nationalid"];
+  echo $bola ;
+  $sql = "INSERT INTO Person (national id)
+VALUES ('$bola')";
+
+$sql2 = "SELECT national id FROM Person";
+
+  ?>
 </body>
 </html>

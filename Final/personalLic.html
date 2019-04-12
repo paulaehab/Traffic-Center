@@ -81,10 +81,10 @@
         <div class="modal-body">
           <form>
               <div class="form-group row">
-                    <label for="firstname" class="col-md-2 col-form-label">الرقم القومى<span>:</span> </label>
+                    <label for="nationalid" class="col-md-2 col-form-label">الرقم القومى<span>:</span> </label>
 
                     <div class="col-md-6">
-                        <input type="text" class="form-control" id="fourthname" name="fourthname" placeholder="الرقم القومى">
+                        <input type="text" class="form-control"  name="nationalid" placeholder="الرقم القومى">
                     </div>
                 </div>
             <div class="col-12 col-sm-6 offset-2">
@@ -113,7 +113,7 @@
           </div>
 <!-- start of user input-->
             <div class="col-12 col-md-9">
-                <form action="test.php" method="get">
+                <form action="server/personalLic.php" method="get">
                   <!--name-->
                     <div class="form-group row">
                         <label for="firstname" class="col-md-2 col-12  col-form-label"> الاسم رباعى<span>:</span> </label>
@@ -134,7 +134,7 @@
                     <div class="form-group row">
                         <label for="firstname" class="col-md-2 col-form-label">تاريخ الميلاد<span>:</span> </label>
                         <div class="col-md-2">
-                            <input type="text" class="form-control" id="day" name="day" placeholder="اليوم">
+                            <input type="text" class="form-control"  name="day" placeholder="اليوم">
                         </div>
                         <div class="col-md-2">
                             <input type="text" class="form-control" id="month" name="month" placeholder="الشهر">
@@ -156,13 +156,13 @@
                         <label for="telnum" class="col-12 col-md-2 col-form-label">النوع:</label>
 
                         <div  class="col-2 col-md-2">
-                            <input id="male" name="male" type="radio" >
-                            <label for="telnum" class="col-12 col-md-2 col-form-label">ذكر</label>
+                            <input type="radio" name="radio"  value="radio1" >
+                            <label for="male" class="col-12 col-md-2 col-form-label">ذكر</label>
                                </div>
 
                       <div  class="col-2 col-md-2">
-                        <input id="female" name="female" type="radio" >
-                           <label for="telnum" class="col-12 col-md-2 col-form-label">انثى</label>
+                        <input type="radio" name="radio" value="radio2" >
+                           <label for="female" class="col-12 col-md-2 col-form-label">انثى</label>
                              </div>
 
 
@@ -171,7 +171,7 @@
                     <div class="form-group row">
                         <label for="email" class="col-md-2 col-form-label">الرقم القومى</label>
                         <div class="col-md-5">
-                            <input type="input" class="form-control" id="nationalid" name="nationalid" placeholder="الرقم القومى">
+                            <input type="text" class="form-control" id="nationalid" name="nationalid" placeholder="الرقم القومى">
                         </div>
                     </div>
                     <!--Mobile-->
@@ -186,24 +186,26 @@
                         <label for="telnum" class="col-12 col-md-2 col-form-label">العنوان :</label>
 
                         <div class="col-5 col-md-5">
-                            <input type="te" class="form-control" id="address1" name="address1" placeholder=" عنوان 1">
+                            <input type="text" class="form-control" id="address1" name="address1" placeholder=" عنوان 1">
                         </div>
                         <div class="col-5 col-md-5">
-                            <input type="te" class="form-control" id="address2" name="address2" placeholder=" عنوان 2">
+                            <input type="text" class="form-control" id="address2" name="address2" placeholder=" عنوان 2">
                         </div>
                     </div>
-                    <!--relogion-->
+                    <!--relegion-->
                     <div class="form-group row">
                         <label  class="col-12 col-md-2 col-form-label">الديانه</label>
                         <div class="btn-group ">
+                          <select name="relegion">
                   <button type="button" class="btn  dropdown-toggle dropdown-toggle-split " data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                      مسلم
                      </button>
                       <div class="dropdown-menu">
 
-                  <a class="dropdown-item">مسلم</a>
-                  <a class="dropdown-item" >مسيحى</a>
+                  <option value="1" class="dropdown-item">مسلم</option>
+                  <option value="2" class="dropdown-item" >مسيحى</option>
                  </div>
+               </select>
                          </div>
                     </div>
                     <!--identification types-->
@@ -211,13 +213,14 @@
                     <div class="form-group row">
                         <label  class="col-12 col-md-2 col-form-label">نوع بطاقه التعريف</label>
                         <div class="btn-group ">
-                  <button type="button" class="btn  dropdown-toggle dropdown-toggle-split " data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-بطاقه                     </button>
+                            <select name="idcard">
+                  <button type="button" class="btn  dropdown-toggle dropdown-toggle-split " data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">بطاقه                     </button>
                       <div class="dropdown-menu">
 
-                  <a class="dropdown-item">بطاقه</a>
-                  <a class="dropdown-item" >جواز سفر</a>
+                  <option value="1" class="dropdown-item">بطاقه</option>
+                  <option  value="2" class="dropdown-item" >جواز سفر</option>
                  </div>
+               </select>
                          </div>
                     </div>
                     <!--personal picture-->
@@ -231,7 +234,7 @@
                  <div class="form-group row">
                       <label for="picrure"  class="col-md-3 col-form-label">برجاء رفع صوره شهاده الميلاد</label>
                            <div class="col-5 col-md-5">
-                                <input type="file" class="form-control-file" id="birthCertficate">
+                                <input type="file" class="form-control-file" id="birthCertficate" name="birthCertficate">
                                    </div>
                                </div>
                        <!--IDpicture-->
@@ -259,7 +262,7 @@
                              <!--send button-->
 
                             <input type="submit" class="btn btn-primary">ارسال </input>
-                                  
+
       </form>
             </div>
             <!--Footer-->
@@ -289,8 +292,7 @@
             	$('#employeePanel').modal('hide');
 
             });
-
-             });
+                     });
 
             </script>
 
