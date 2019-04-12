@@ -1,0 +1,35 @@
+.Hints{
+  text-align: right;
+color: red;
+}
+.warning{
+  color: red;
+}
+
+.crumb{
+  text-align: right;
+}
+.page-footer{
+  margin-top: 20px;
+    background-color: black;
+}
+.navbar{
+  background-color: #e3f2fd;
+}
+.adress{
+  text-align: center;
+}
+.footr{
+  margin: 0px auto;
+}
+.buttons{
+  width:200px;
+}
+.introduction{
+  text-align: right;
+color: red;
+font-size: 20px;
+}
+.form-control{
+  border: solid;
+}
