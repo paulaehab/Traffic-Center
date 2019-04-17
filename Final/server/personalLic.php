@@ -12,7 +12,7 @@ require 'db_connection.php';
 // veryimportant notes
 //1- the php get the value of html by the (name)o of field not id or any thing else
 
-//////////
+////////// <---- GET THE INFORMATION OF citizen----->////////////
 
 //1-get the infromation of the citizen
 $firstname=$_GET["firstname"];
@@ -23,8 +23,8 @@ $fourthname=$_GET["fourthname"];
 $day=$_GET["day"];
 $month=$_GET["month"];
 $year=$_GET["year"];
-$birthdate=$day.$month.$year;//add the 3 in one line
-echo $birthdate;
+$birthdate=$day."-".$month.'-'.$year;//add the 3 in one line
+//echo $birthdate;
 //3- get the --birthlocation--
 $birthlocation=$_GET["birthlocation"];
 //4-get the gender by check wich radio button the user choose
@@ -41,9 +41,7 @@ $nationalid=$_GET['nationalid'];
 //6- get the citizen --Mobile--
 $mobile=$_GET['telnum'];
 //7- get the citzien --address--
-$address1=$_GET['address1'];
-$address2=$_GET['address2'];
-$address=$address1.$address2;
+$address=$_GET['address'];
 //8-get citizen --relegion--
 $relegion;
 if($_GET['relegion']=="1"){
@@ -60,26 +58,54 @@ if($_GET['idcard']=="1"){
 }else if($_GET['idcard']=="2"){
   $identfication="باسبور";
 }
-$sql = "INSERT INTO person (national_id, firstname, secondname,thirdname,fourthname,address,birthdate,religion,gender,nationality,birth_place,medical_report,personal_picture,birth_certificate)
-VALUES ('$nationalid', '$firstname', '$secondname','$thirdname','$fourthname','$address','$birthdate','$relegion','$gender','$identfication','$birthlocation','123213','121212','121212')";
+
+///////////<----- make ready of personal licesne data----->////////////////////
+//1-get the current date as start date of license
+$startdate= date("Y-m-d");
+
+//2-add 3 years to the current year to make it as endyear
+$num = intval(strtok($startdate, '-')) ;
+ $enddate=$num+3;
+ $enddate=$enddate.'-'.date("m").date("d");
+
+
+
+
+
+
+
+//$file = addslashes(file_get_contents($_FILES["personalpicture"]));
+
+
+$sql = "INSERT INTO person (national_id, firstname, secondname,thirdname,fourthname,address,birthdate,religion,gender,nationality,birth_place)
+VALUES ('$nationalid', '$firstname', '$secondname','$thirdname','$fourthname','$address','$birthdate','$relegion','$gender','$identfication','$birthlocation')";
 
 
 $sql2="INSERT INTO phone (phone_number,national_id)
 VALUES('$mobile','$nationalid')";
+$sql3="INSERT INTO personal_license(release_date,end_date,national_id)
+VALUES('$startdate','$enddate','$nationalid')";
 
 
-if ($conn->query($sql) === TRUE) {
-    echo "New record created successfully";
-} else {
-    echo "Error: " . $sql . "<br>" . $conn->error;
-}
+if ($conn->query($sql) === TRUE && $conn->query($sql2) === TRUE &&$conn->query($sql3) === TRUE) {
+ header("Location: ../index.html");
+ echo"succed";
+} else{
+  echo "Error: " . $sql . "<br>" . $conn->error;
+echo '<script type="text/javascript">
+alert("احدى البيانات ناقصه ارجوك ملىء  جميع البيانات");
+location="../personalLic.html";
+</script>';
+
+/*
+ header("Location: ../personalLic.html");
+ echo "<script typetext/javascript'>alert(\"$error\");</script>";
+*/
+
+};
 
 
-if ($conn->query($sql2) === TRUE) {
-    echo "New record created successfully";
-} else {
-    echo "Error: " . $sql . "<br>" . $conn->error;
-}
+
 
 
 
