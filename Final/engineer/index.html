@@ -43,29 +43,21 @@
             </div>
           </div>
      <div class="col-12 col-md-9">
-                <form>
+                <form action="../server/engineerindex.php" method="get">
 
-                          <!--relogion-->
+                        <!--name-->
                     <div class="form-group row">
-                        <label  class="col-12 col-md-2 col-form-label">نوع المركبة</label>
-                        <div class="btn-group ">
-                  <button type="button" class="btn  dropdown-toggle dropdown-toggle-split " data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                     ليموزين
-                     </button>
-                      <div class="dropdown-menu">
-
-                  <a class="dropdown-item">ليموزين</a>
-                  <a class="dropdown-item" >دراجة نارية</a>
-                  <a class="dropdown-item" >نقل</a>
-                 </div>
-                         </div>
+                        <label for="vichaelname" class="col-md-2 col-12  col-form-label"> رقم الطلب<span>:</span> </label>
+                        <div class="col-md-2">
+                            <input type="text" class="form-control" id="vichaelname" name="requestnumber" placeholder="">
+                        </div>
                     </div>
 
                        <!--name-->
                     <div class="form-group row">
                         <label for="vichaelname" class="col-md-2 col-12  col-form-label"> اسم المركبه<span>:</span> </label>
                         <div class="col-md-2">
-                            <input type="text" class="form-control" id="vichaelname" name="vichaelname" placeholder="">
+                            <input type="text" class="form-control" id="vichaelname" name="vehiclename" placeholder="">
                         </div>
                     </div>
 
@@ -73,14 +65,14 @@
                     <div class="form-group row">
                         <label for="vichaeltype" class="col-md-2 col-12  col-form-label"> النوع<span>:</span> </label>
                         <div class="col-md-2">
-                            <input type="text" class="form-control" id="vichaeltype" name="vichaeltype" placeholder="">
+                            <input type="text" class="form-control" id="vichaeltype" name="vehicletype" placeholder="">
                         </div>
                     </div>
                     <!--name-->
                     <div class="form-group row">
                         <label for="vichaelmodel" class="col-md-2 col-12  col-form-label"> موديل<span>:</span> </label>
                         <div class="col-md-2">
-                            <input type="text" class="form-control" id="vichaelmodel" name="vichaelmodel" placeholder="">
+                            <input type="text" class="form-control" id="vichaelmodel" name="vehiclemodel" placeholder="">
                         </div>
                     </div>
                     <!--name-->
@@ -101,29 +93,31 @@
                     <div class="form-group row">
                         <label for="motorsize" class="col-md-2 col-12  col-form-label"> حجم الموتور<span>:</span> </label>
                         <div class="col-md-2">
-                            <input type="text" class="form-control" id="firstname" name="firstname" placeholder="">
+                            <input type="text" class="form-control" id="firstname" name="motorvol" placeholder="">
                         </div>
                     </div>
                     <!--name-->
                     <div class="form-group row">
                         <label for="clindernumbers" class="col-md-2 col-12  col-form-label">  عدد السلندر<span>:</span> </label>
                         <div class="col-md-2">
-                            <input type="text" class="form-control" id="clindernumbers" name="clindernumbers" placeholder="">
+                            <input type="text" class="form-control" id="clindernumbers" name="cylindernumber" placeholder="">
                         </div>
                     </div>
-                           <!--relogion-->
+                           <!--fuel type-->
                     <div class="form-group row">
                         <label  class="col-12 col-md-2 col-form-label"> </label>
                         <div class="btn-group ">
+                            <select name="fueltype">
                   <button type="button" class="btn  dropdown-toggle dropdown-toggle-split " data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                      بنزين
                      </button>
                       <div class="dropdown-menu">
 
-                  <a class="dropdown-item">بنزين</a>
-                  <a class="dropdown-item" >غاز طبيعي</a>
-                  <a class="dropdown-item" >سولار</a>
-                 </div>
+                  <option value="ben" class="dropdown-item">بنزين</option>
+                  <option value="gas" class="dropdown-item" >غاز طبيعي</option>
+                  <option value="solar" class="dropdown-item" >سولار</option>
+                    </div>
+                            </select>
                          </div>
                     </div>
                      <!--name-->
@@ -133,44 +127,10 @@
                             <input type="text" class="form-control" id="color" name="color" placeholder="">
                         </div>
                     </div>
-                     <!--name-->
-                    <div class="form-group row">
-                        <label for="ta2men" class="col-md-2 col-12  col-form-label"> التأمين<span>:</span> </label>
-                        <div class="col-md-2">
-                            <input type="text" class="form-control" id="ta2men" name="ta2men" placeholder="">
-                        </div>
-                    </div>
-                     <!--name-->
-                    <div class="form-group row">
-                        <label for="notes" class="col-md-2 col-12  col-form-label"> ملاحظات<span>:</span> </label>
-                        <div class="col-md-2">
-                            <input type="text" class="form-control" id="notes" name="notes" placeholder="">
-                        </div>
-                    </div>
-                    <!--Gender-->
-
-                    <div class="form-group row">
-                        <label for="telnum" class="col-12 col-md-2 col-form-label">المركبة مطابقة للمعايير</label>
-
-                        <div  class="col-2 col-md-2">
-                            <input id="male" name="male" type="radio" >
-                            <label for="telnum" class="col-12 col-md-2 col-form-label">نعم</label>
-                               </div>
-
-                      <div  class="col-2 col-md-2">
-                        <input id="female" name="female" type="radio" >
-                           <label for="telnum" class="col-12 col-md-2 col-form-label">لا</label>
-                             </div>
-
-
-                    </div>
-                    <!--name-->
-                    <div class="form-group row">
-                        <label for="firstname" class="col-md-2 col-12  col-form-label"> سبب الرفض<span>:</span> </label>
-                        <div class="col-md-4">
-                            <textarea type="text" class="form-control" id="firstname" name="firstname" placeholder="" rows="4" cols="50"></textarea>
-                        </div>
-                    </div>
+                     
+                    
+                    <!--removed last 4 rows because not needed-->
+                    
                     <!--send button-->
                     <div class="form-group row">
                         <div class="offset-md-2 col-md-10">
