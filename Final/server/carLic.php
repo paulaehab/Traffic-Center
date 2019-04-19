@@ -58,6 +58,24 @@ if($_GET['idcard']=="1"){
 }else if($_GET['idcard']=="2"){
   $identfication="باسبور";
 }
+///10-get the trafiic location
+$trafficlocation;
+if($_GET['trafficlocation']=="1"){
+  $trafficlocation="مرور البساتين";
+}else if($_GET['trafficlocation']=="2"){
+  $trafficlocation="مرور المعادى";
+} else if($_GET['trafficlocation']=="3"){
+  $trafficlocation="مرور المعادى";
+}
+//11- get the licnesce type
+$licensetype;
+if($_GET['licensetype']=="1"){
+  $licensetype="خاصه";
+}else if($_GET['licensetype']=="2"){
+  $licensetype="درجه اولى";
+} else if($_GET['licensetype']=="3"){
+  $licensetype="درجه ثانيه ";
+}
 
 ///////////<----- make ready of personal licesne data----->////////////////////
 //1-get the current date as start date of license
@@ -68,7 +86,8 @@ $num = intval(strtok($startdate, '-')) ;
  $enddate=$num+3;
  $enddate=$enddate.'-'.date("m").('-').date("d");
 
-
+/// generate request number randomly
+$requestnumber=rand(1, 4);
 
 
 
@@ -80,22 +99,25 @@ $num = intval(strtok($startdate, '-')) ;
 $sql = "INSERT INTO person (national_id, firstname, secondname,thirdname,fourthname,address,birthdate,religion,gender,nationality,birth_place)
 VALUES ('$nationalid', '$firstname', '$secondname','$thirdname','$fourthname','$address','$birthdate','$relegion','$gender','$identfication','$birthlocation')";
 
-
-$sql2="INSERT INTO phone (phone_number,national_id)
+$sql2 ="INSERT INTO phone (phone_number,national_id)
 VALUES('$mobile','$nationalid')";
-$sql3="INSERT INTO personal_license(release_date,end_date,national_id)
-VALUES('$startdate','$enddate','$nationalid')";
+
+$sql3="INSERT INTO car_license(release_date,end_date,license_type,traffic_location,national_id,request_number)
+VALUES('$startdate','$enddate','$licensetype','$trafficlocation','$nationalid','$requestnumber')";
 
 
-if ($conn->query($sql) === TRUE && $conn->query($sql2) === TRUE &&$conn->query($sql3) === TRUE) {
+$sql4 ="INSERT INTO car_information (request_number)
+VALUES('$requestnumber')";
+
+if ($conn->query($sql) === TRUE && $conn->query($sql2) === TRUE &&$conn->query($sql3) === TRUE&&$conn->query($sql4) === TRUE) {
  header("Location: ../index.html");
- echo"succed";
+ //echo"succed";
 } else{
   echo "Error: " . $sql . "<br>" . $conn->error;
-echo '<script type="text/javascript">
-alert("احدى البيانات ناقصه ارجوك ملىء  جميع البيانات");
-location="../personalLic.html";
-</script>';
+//echo '<script type="text/javascript">
+//alert("احدى البيانات ناقصه ارجوك ملىء  جميع البيانات");
+//location="../carLic.html";
+//</script>';
 
 /*
  header("Location: ../personalLic.html");

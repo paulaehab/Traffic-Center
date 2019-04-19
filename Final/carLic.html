@@ -111,7 +111,7 @@
           </div>
 <!-- start of user input-->
             <div class="col-12 col-md-9">
-                <form>
+                <form action="server/carLic.php" method="get" >
                   <!--name-->
                     <div class="form-group row">
                         <label class="col-md-2 col-form-label"> الاسم رباعى<span>:</span> </label>
@@ -149,28 +149,28 @@
                                 <input type="text" class="form-control"  name="birthlocation" placeholder="محل الميلاد">
                             </div>
                             </div>
-                                <!--Gender-->
-                            <div class="form-group row">
-                                <label  class="col-12 col-md-2 col-form-label">النوع:</label>
-                                <div  class="col-2 col-md-2">
-                                    <input  name="male" type="radio" >
-                                       </div>
-                    <label class="col-12 col-md-2 col-form-label">ذكر</label>
-                             <div  class="col-2 col-md-2">
-                                    <input  name="female" type="radio" >
+                            <!--Gender-->
+
+                                  <div class="form-group row">
+                                      <label for="telnum" class="col-12 col-md-2 col-form-label">النوع:</label>
+
+                                      <div  class="col-2 col-md-2">
+                                          <input type="radio" name="radio"  value="radio1" required oninvalid="this.setCustomValidity('يرجاء ملىء البينات المطلوبه')">
+                                          <label for="male" class="col-12 col-md-2 col-form-label">ذكر</label>
                                              </div>
-                               <label  class="col-12 col-md-2 col-form-label">انثى</label>
-                            </div>
+
+                                    <div  class="col-2 col-md-2">
+                                      <input type="radio" name="radio" value="radio2" required oninvalid="this.setCustomValidity('يرجاء ملىء البينات المطلوبه')" >
+                                         <label for="female" class="col-12 col-md-2 col-form-label">انثى</label>
+                                           </div>
                               <!--address-->
                             <div class="form-group row">
                                 <label for="telnum" class="col-12 col-md-2 col-form-label">العنوان :</label>
 
                                 <div class="col-5 col-md-5">
-                                    <input type="text" class="form-control" id="address1" name="address1" placeholder=" عنوان 1">
+                                    <input type="text" class="form-control" id="address1" name="address" placeholder=" عنوان 1">
                                 </div>
-                                <div class="col-5 col-md-5">
-                                    <input type="text" class="form-control" id="address2" name="address2" placeholder=" عنوان 2">
-                                </div>
+
                             </div>
                                <!--Nationalid-->
                             <div class="form-group row">
@@ -179,36 +179,83 @@
                                     <input type="text" class="form-control" id="nationalid" name="nationalid" placeholder="الرقم القومى">
                                 </div>
                             </div>
-<!-- traffic location-->
+                            <!--Mobile-->
                             <div class="form-group row">
-                                <label for="" class="col-md-2 col-form-label"> وحده الترخيص <span>:</span> </label>
+                                <label for="telnum" class="col-12 col-md-2 col-form-label">رقم المحمول</label>
+                                <div class="col-5 col-md-5">
+                                    <input type="te" class="form-control" id="telnum" name="telnum" placeholder="رقم المحمول" required oninvalid="this.setCustomValidity('يرجاء ملىء البينات المطلوبه')">
+                                </div>
+                            </div>
+
+                            <!--relegion-->
+                            <div class="form-group row">
+                                <label  class="col-12 col-md-2 col-form-label">الديانه</label>
                                 <div class="btn-group ">
+                                  <select name="relegion">
                           <button type="button" class="btn  dropdown-toggle dropdown-toggle-split " data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                             --اختار وحده الترخيص--
+                             مسلم
                              </button>
                               <div class="dropdown-menu">
-                          <a class="dropdown-item">مرور البساتين</a>
-                          <a class="dropdown-item" >مرور المعادى</a>
-                          <a class="dropdown-item" >مرور حلوان</a>
-                         </div>
+
+                          <option value="1" class="dropdown-item">مسلم</option>
+                          <option value="2" class="dropdown-item" >مسيحى</option>
+                          </div>
+                          </select>
                                  </div>
-                                </div>
-                                </div>
-                                <!-- type of  license-->
-                                <div class="form-group row">
-                                    <label  class="col-md-2 col-form-label">نوع الترخيص <span>:</span></label>
-                                      <div class="btn-group ">
-                                <button type="button" class="btn  dropdown-toggle dropdown-toggle-split " data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                   --اختار نوع الترخيص--
-                                   </button>
-                                    <div class="dropdown-menu">
-                                <a class="dropdown-item"> خاصه</a>
-                                <a class="dropdown-item" >درجه اولى</a>
-                                <a class="dropdown-item" > درجه ثانيه </a>
-                                <a class="dropdown-item" > درجه ثالثه </a>
-                               </div>
-                                     </div>
-                                    </div>
+                            </div>
+                            <!--identification types-->
+
+                            <div class="form-group row">
+                                <label  class="col-12 col-md-2 col-form-label">نوع بطاقه التعريف</label>
+                                <div class="btn-group ">
+                                    <select name="idcard">
+                          <button type="button" class="btn  dropdown-toggle dropdown-toggle-split " data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">بطاقه                     </button>
+                              <div class="dropdown-menu">
+
+                          <option value="1" class="dropdown-item">بطاقه</option>
+                          <option  value="2" class="dropdown-item" >جواز سفر</option>
+                          </div>
+                          </select>
+                                 </div>
+                            </div>
+
+                            <!--Traffic location-->
+
+                            <div class="form-group row">
+                                <label  class="col-12 col-md-2 col-form-label">وحده الترخيص  </label>
+                                <div class="btn-group ">
+                                    <select name="trafficlocation">
+                          <button type="button" class="btn  dropdown-toggle dropdown-toggle-split " data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+
+                          </button>
+                              <div class="dropdown-menu">
+
+                          <option value="1" class="dropdown-item">البساتين </option>
+                          <option  value="2" class="dropdown-item" >المعادى </option>
+                          <option  value="2" class="dropdown-item" >حلوان </option>
+                          </div>
+                          </select>
+                                 </div>
+                            </div>
+                            <!--licensetype-->
+                                  <div class="form-group row">
+<label  class="col-12 col-md-2 col-form-label">نوع الترخيص  </label>
+                      <div class="btn-group ">
+                      <select name="licensetype">
+      <button type="button" class="btn  dropdown-toggle dropdown-toggle-split " data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+
+                          </button>
+                    <div class="dropdown-menu">
+
+                      <option value="1" class="dropdown-item">خاصه </option>
+                          <option  value="2" class="dropdown-item" >درجه اولى </option>
+                          <option  value="2" class="dropdown-item" >درجه ثانيه </option>
+
+                      </div>
+                          </select>
+                           </div>
+                          </div>
+
 
 
                                     <div class="offset-md-2 col-md-10">
