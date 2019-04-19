@@ -38,35 +38,7 @@
         </div>
       </div>
   </header>
-  <!-- The pop up of employee entry. -->
-  <div id="employeePanel" class="modal fade" role="dialog">
-    <div class="modal-dialog modal-lg" role="content">
-      <div class="modal-content">
-        <div class="modal-header bg-primary">
-          <button type="button" class="close ml-auto" id="close">
-            &times;
-          </button>
-          <h4 class="modal-title ml-auto  ">برجاء ادخال رقمك القومى</h4>
-        </div>
-        <div class="modal-body">
-          <form>
-              <div class="form-group row">
-                    <label for="nationalid" class="col-md-2 col-form-label">الرقم القومى<span>:</span> </label>
 
-                    <div class="col-md-6">
-                        <input type="text" class="form-control"  name="nationalid" placeholder="الرقم القومى">
-                    </div>
-                </div>
-            <div class="col-12 col-sm-6 offset-2">
-              <button type="submit" class="btn btn-secondary">
-                دخول
-              </button>
-            </div>
-          </form>
-        </div>
-      </div>
-    </div>
-  </div>
   <!--adress-->
   <div class="row row-content ">
         <div class="col-12 ml-auto adress">
@@ -83,7 +55,7 @@
           </div>
 <!-- start of user input-->
             <div class="col-12 col-md-9">
-                <form action="" method="get">
+                <form action="server/manager.php" method="get">
                   <!--name-->
                     <div class="form-group row">
                         <label for="firstname" class="col-md-2 col-12  col-form-label"> الاسم رباعى<span>:</span> </label>
@@ -157,7 +129,7 @@
                         <label for="telnum" class="col-12 col-md-2 col-form-label">العنوان :</label>
 
                         <div class="col-5 col-md-5">
-                            <input type="text" class="form-control" id="address1" name="address1" placeholder=" عنوان 1" required oninvalid="this.setCustomValidity('يرجاء ملىء البينات المطلوبه')">
+                            <input type="text" class="form-control" id="address1" name="address" placeholder=" العنوان" required oninvalid="this.setCustomValidity('يرجاء ملىء البينات المطلوبه')">
                         </div>
 
                     </div>
@@ -172,22 +144,21 @@
                     </div>
                     <!--job title-->
                     <div class="form-group row">
-                        <label for="number" class="col-12 col-md-2 col-form-label">الوظيفه :</label>
+                        <label  class="col-12 col-md-2 col-form-label">الوظيفه </label>
+                        <div class="btn-group ">
+                          <select name="jobtitle">
+                  <button type="button" class="btn  dropdown-toggle dropdown-toggle-split " data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                     مسلم
+                     </button>
+                      <div class="dropdown-menu">
 
-                        <div class="col-5 col-md-5">
-                            <input type="text" class="form-control" id="salary" name="job title" placeholder=" الوظيفه" required oninvalid="this.setCustomValidity('يرجاء ملىء البينات المطلوبه')">
-                        </div>
-
+                  <option value="1" class="dropdown-item">ظابط مرور </option>
+                  <option value="2" class="dropdown-item" >مهندس الفحص</option>
+                 </div>
+               </select>
+                         </div>
                     </div>
-                    <!--username-->
-                    <div class="form-group row">
-                        <label for="number" class="col-12 col-md-2 col-form-label">اسم المستخدم الخاص بيه :</label>
 
-                        <div class="col-5 col-md-5">
-                            <input type="text" class="form-control" id="salary" name="job title" placeholder=" اسم المستخدم" required oninvalid="this.setCustomValidity('يرجاء ملىء البينات المطلوبه')">
-                        </div>
-
-                    </div>
                     <!--relegion-->
                     <div class="form-group row">
                         <label  class="col-12 col-md-2 col-form-label">الديانه</label>
@@ -205,20 +176,7 @@
                          </div>
                     </div>
 
-                    <!--personal picture-->
-                    <div class="form-group row">
-                  <label for="personalpicture"  class="col-md-3 col-form-label">برجاءرفع صوره شخصيه 4*6</label>
-                 <div class="col-5 col-md-5">
-                  <input type="file" class="form-control-file" name="personalpicture"id="personalpicture">
-                   </div>
-                     </div>
 
-                           <div class="form-group row">
-                          <label for="IDpicture"  class="col-md-3 col-form-label">برجاء رفع صوره البطاقه</label>
-                           <div class="col-5 col-md-5">
-                    <input type="file" class="form-control-file" name="IDpicture" id="IDpicture">
-                                         </div>
-                                       </div>
                                        <!--send button-->
 
                                       <input type="submit" name="insert" class="btn btn-primary">ارسال </input>

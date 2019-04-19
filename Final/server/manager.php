@@ -43,9 +43,15 @@ $mobile=$_GET['telnum'];
 //7- get the employee --address--
 $address=$_GET['address'];
 //8- get employee --salary--
-$salary=$_GET['salary']; 
+$salary=$_GET['salary'];
 //9- get employee --job--
-$job_title=$_GET['job_title']; 
+$job_title;
+$jobtitle;
+if($_GET['jobtitle']=="1"){
+  $jobtitle ="ظابط مرور";
+}else if($_GET['jobtitle']=="2"){
+  $jobtitle="مهندس فحص";
+}
 //10-get employee --relegion--
 $relegion;
 if($_GET['relegion']=="1"){
@@ -55,21 +61,13 @@ if($_GET['relegion']=="1"){
     $relegion="مسيحى";
 
 }
-//9- get thd employee's username
-$username=$_GET['username'];
 
 
 
-
-
-
-
-
-//$file = addslashes(file_get_contents($_FILES["personalpicture"]));
 
 
 $sql = "INSERT INTO employee (salary, job_title,national_id)
-VALUES ('$salary', '$job_title','$national_id')";
+VALUES ('$salary', '$jobtitle','$nationalid')";
 
 $sql2 = "INSERT INTO person (national_id, firstname, secondname,thirdname,fourthname,address,birthdate,religion,gender,birth_place)
 VALUES ('$nationalid', '$firstname', '$secondname','$thirdname','$fourthname','$address','$birthdate','$relegion','$gender','$birthlocation')";
@@ -77,16 +75,16 @@ VALUES ('$nationalid', '$firstname', '$secondname','$thirdname','$fourthname','$
 
 
 
-if ($conn->query($sql) === TRUE && $conn->query($sql2) === TRUE) {
+if ($conn->query($sql2) === TRUE && $conn->query($sql) === TRUE) {
  header("Location: ../index.html");
- echo"succed";
+ //echo"succed";
 } else{
   echo "Error: " . $sql . "<br>" . $conn->error;
-echo '<script type="text/javascript">
+/*echo '<script type="text/javascript">
 alert("احدى البيانات ناقصه ارجوك ملىء  جميع البيانات");
 location="../manager.html";
 </script>';
-
+*/
 /*
  header("Location: ../personalLic.html");
  echo "<script typetext/javascript'>alert(\"$error\");</script>";
