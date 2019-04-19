@@ -86,11 +86,7 @@ $num = intval(strtok($startdate, '-')) ;
  $enddate=$num+3;
  $enddate=$enddate.'-'.date("m").('-').date("d");
 
-/// generate request number randomly
-$requestnumber=rand(1, 4);
-
-
-
+$requestnumber=rand(0,3);
 
 
 //$file = addslashes(file_get_contents($_FILES["personalpicture"]));
@@ -106,18 +102,40 @@ $sql3="INSERT INTO car_license(release_date,end_date,license_type,traffic_locati
 VALUES('$startdate','$enddate','$licensetype','$trafficlocation','$nationalid','$requestnumber')";
 
 
-$sql4 ="INSERT INTO car_information (request_number)
-VALUES('$requestnumber')";
+//$sql4 ="INSERT INTO car_information (request_number)
+//VALUES('$requestnumber')";
 
-if ($conn->query($sql) === TRUE && $conn->query($sql2) === TRUE &&$conn->query($sql3) === TRUE&&$conn->query($sql4) === TRUE) {
- header("Location: ../index.html");
- //echo"succed";
+if ($conn->query($sql) === TRUE && $conn->query($sql2) === TRUE &&$conn->query($sql3) === TRUE) {
+/// after insertion of the carlicense i get the carLic number
+//by the same national id of the user how want to creat car licesne
+   //$sql4="SELECT license_number
+///   FROM car_license
+  /// WHERE national_id=$nationalid ";
+  /// $query = mysqli_query($conn,$sql4);
+
+  /// if($conn->query($sql4) == TRUE){
+  ///   while ($row = mysqli_fetch_array($query))
+  // {
+// here i get the carlicense number that i have inserted right now
+///   $license_number= $row["license_number"];
+////   }
+ //}
+ // here i want to add this car license in the forign key in car_information table
+   ///$sql5="INSERT INTO car_information (request_number)
+///VALUES('$license_number')";
+
+////$conn->query($sql5);
+
+
+   header("Location: ./succescarlic.php?license_number=".$requestnumber);
+
+
 } else{
-  echo "Error: " . $sql . "<br>" . $conn->error;
-//echo '<script type="text/javascript">
-//alert("احدى البيانات ناقصه ارجوك ملىء  جميع البيانات");
-//location="../carLic.html";
-//</script>';
+//  echo "Error: " . $sql . "<br>" . $conn->error;
+echo '<script type="text/javascript">
+alert("احدى البيانات ناقصه ارجوك ملىء  جميع البيانات");
+location="../carLic.html";
+</script>';
 
 /*
  header("Location: ../personalLic.html");
