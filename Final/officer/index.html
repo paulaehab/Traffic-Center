@@ -42,7 +42,7 @@
             </div>
           </div>
      <div class="col-12 col-md-9">
-                <form>
+                <form action="server/officer.php" method="get">
                   <!--name-->
                     <div class="form-group row">
                         <label for="violationnum" class="col-md-2 col-12  col-form-label"> رقم المخالفه<span>:</span> </label>
@@ -152,12 +152,12 @@
                         <label for="telnum" class="col-12 col-md-2 col-form-label">تم سحب الرخصه</label>
 
                         <div  class="col-2 col-md-2">
-                            <input id="male" name="male" type="radio" >
+                            <input id="male" name="taken" value="yes" type="radio" >
                              <label  class="col-12 col-md-2 col-form-label">نعم</label>
                                </div>
 
                       <div  class="col-2 col-md-2">
-                        <input id="female" name="female" type="radio" >
+                        <input id="female" name="taken" value="no" type="radio" >
                               <label  class="col-12 col-md-2 col-form-label">لا</label>
                              </div>
 
