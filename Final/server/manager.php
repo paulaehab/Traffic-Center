@@ -51,6 +51,8 @@ if($_GET['jobtitle']=="1"){
   $jobtitle ="ظابط مرور";
 }else if($_GET['jobtitle']=="2"){
   $jobtitle="مهندس فحص";
+}else if($_GET['jobtitle']=="3"){
+    $jobtitle="موظف فى هيئه المرور";
 }
 //10-get employee --relegion--
 $relegion;

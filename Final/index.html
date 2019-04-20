@@ -45,9 +45,7 @@
               <a class="dropdown-item" href="./carViolations.html">استعلام عن المخلفات</a>
           </div>
         </li>
-        <li class="nav-item">
-          <a class="nav-link" href="./requests.html">متابعه الطلبات</a>
-        </li>
+
 
       </ul>
     </div>
@@ -70,6 +68,7 @@
 
   <!-- The pop up of employee entry. -->
   <div id="employeePanel" class="modal fade" role="dialog">
+
     <div class="modal-dialog modal-lg" role="content">
       <div class="modal-content">
         <div class="modal-header bg-primary">
@@ -79,16 +78,16 @@
           <h4 class="modal-title ml-auto  ">برجاء ادخال رقمك القومى</h4>
         </div>
         <div class="modal-body">
-          <form>
+          <form action="server/login.php" method="get">
               <div class="form-group row">
                     <label for="firstname" class="col-md-2 col-form-label">الرقم القومى<span>:</span> </label>
 
                     <div class="col-md-6">
-                        <input type="text" class="form-control" id="empid" name="fourthname" placeholder="الرقم القومى">
+                        <input type="text" class="form-control"  name="nationalid" placeholder="الرقم القومى">
                     </div>
                 </div>
             <div class="col-12 col-sm-6 offset-2">
-              <button type="submit" class="btn btn-secondary" onclick="checkid()">
+              <button type="submit" class="btn btn-secondary" >
                 دخول
               </button>
             </div>
@@ -133,7 +132,7 @@
   <script src="node_modules/jquery/dist/jquery.slim.min.js"></script>
   <script src="node_modules/popper.js/dist/umd/popper.min.js"></script>
   <script src="node_modules/bootstrap/dist/js/bootstrap.min.js"></script>
-    <script src="./idcheck.js"></script>
+
 
 
 <script>

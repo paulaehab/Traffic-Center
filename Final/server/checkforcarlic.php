@@ -271,7 +271,7 @@ if($conn->query($sql) == TRUE){
                                              if(isset($_POST["submit"]))
                                              {
                                                $sql2 = "SELECT license_number
-                                                  FROM car_license
+                                                  FROM personal_license
                                                    WHERE national_id=$national_id";
                                                    $query = mysqli_query($conn,$sql2);
                                                    // check if the conncetion with database is good and sql query is done with no problem

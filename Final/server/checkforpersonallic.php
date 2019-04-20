@@ -308,11 +308,12 @@ if($conn->query($sql) == TRUE){
                                              if(isset($_POST["submit"]))
                                              {
                                                $sql2 = "SELECT license_number
-                                               		FROM personal_license
+                                               		FROM car_license
                                                    WHERE national_id=$national_id";
                                                    $query = mysqli_query($conn,$sql2);
                                                    // check if the conncetion with database is good and sql query is done with no problem
-                                                   if($conn->query($sql2) == TRUE){
+                                                   if($conn->query($sql2) === TRUE){
+
                                                      echo '<script type="text/javascript">
                                                      alert("لديك بالفعل رخصه شخصيه");
                                                      location="../index.html";
@@ -345,9 +346,11 @@ if($conn->query($sql) == TRUE){
                                                 } else if($_POST['licensetype']=="3"){
                                                   $licensetype="درجه ثانيه ";
                                                 }
+                                                $requestnumber=rand(0,3);
 
-                                                $sql3="INSERT INTO car_license(release_date,end_date,license_type,traffic_location,national_id)
-                                                VALUES('$startdate','$enddate','$licensetype','$trafficlocation','$national_id')";
+
+                                                $sql3="INSERT INTO car_license(release_date,end_date,license_type,traffic_location,national_id,request_number)
+                                                VALUES('$startdate','$enddate','$licensetype','$trafficlocation','$national_id','$requestnumber')";
 
 
                                                 if ($conn->query($sql3) === TRUE ) {
