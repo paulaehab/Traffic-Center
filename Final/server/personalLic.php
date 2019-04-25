@@ -86,17 +86,15 @@ $num = intval(strtok($startdate, '-')) ;
 //$file = addslashes(file_get_contents($_FILES["personalpicture"]));
 
 
-$sql = "INSERT INTO person (national_id, firstname, secondname,thirdname,fourthname,address,birthdate,religion,gender,nationality,birth_place,traffic_location)
-VALUES ('$nationalid', '$firstname', '$secondname','$thirdname','$fourthname','$address','$birthdate','$relegion','$gender','$identfication','$birthlocation','$trafficlocation')";
+$sql = "INSERT INTO person (national_id, firstname, secondname,thirdname,fourthname,address,birthdate,religion,gender,nationality,birth_place,traffic_location,phone_number)
+VALUES ('$nationalid', '$firstname', '$secondname','$thirdname','$fourthname','$address','$birthdate','$relegion','$gender','$identfication','$birthlocation','$trafficlocation',$mobile)";
 
 
-$sql2="INSERT INTO phone (phone_number,national_id)
-VALUES('$mobile','$nationalid')";
 $sql3="INSERT INTO personal_license(release_date,end_date,national_id)
 VALUES('$startdate','$enddate','$nationalid')";
 
 
-if ($conn->query($sql) === TRUE && $conn->query($sql2) === TRUE &&$conn->query($sql3) === TRUE) {
+if ($conn->query($sql) === TRUE  &&$conn->query($sql3) === TRUE) {
  header("Location: ../index.html");
  echo"succed";
 } else{

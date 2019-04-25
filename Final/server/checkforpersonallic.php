@@ -51,6 +51,7 @@ if($conn->query($sql) == TRUE){
   $birthlocation=$row["birth_place"];
   $gender=$row["gender"];
   $address=$row["address"];
+  $phone=$row["phone_number"];
   ////////
       }
     }else{
@@ -63,18 +64,7 @@ if($conn->query($sql) == TRUE){
 
     }
   	/////////////// retrive the mobile number of the citizen
-  	$sql3 = "SELECT *
-  			FROM phone
-  	    WHERE national_id=$national_id";
-  			$query = mysqli_query($conn,$sql3);
-  			// check if the conncetion with database is good and sql query is done with no problem
-  			if($conn->query($sql3) == TRUE){
-  			//mysqli_fetch_array-> this php built in function to retrive around all the return of sql query
-  			  while ($row = mysqli_fetch_array($query))
-  			  		{
 
-  			$phone=$row["phone_number"];
-  			    }
   			  }else{
             /*echo '<script type="text/javascript">
            alert("الرقم القومى خاطىء");
@@ -168,35 +158,7 @@ if($conn->query($sql) == TRUE){
             </div>
           </div>
       </header>
-    <!-- The pop up of employee entry. -->
-    <div id="employeePanel" class="modal fade" role="dialog">
-      <div class="modal-dialog modal-lg" role="content">
-        <div class="modal-content">
-          <div class="modal-header bg-primary">
-            <button type="button" class="close ml-auto" id="close">
-              &times;
-            </button>
-            <h4 class="modal-title ml-auto  ">برجاء ادخال رقمك القومى</h4>
-          </div>
-          <div class="modal-body">
-            <form>
-                <div class="form-group row">
-                      <label for="nationalid" class="col-md-2 col-form-label">الرقم القومى<span>:</span> </label>
 
-                      <div class="col-md-6">
-                          <input type="text" class="form-control"  name="nationalid" placeholder="الرقم القومى">
-                      </div>
-                  </div>
-              <div class="col-12 col-sm-6 offset-2">
-                <button type="submit" class="btn btn-secondary">
-                  دخول
-                </button>
-              </div>
-            </form>
-          </div>
-        </div>
-      </div>
-    </div>
     <!--adress-->
     <div class="row row-content ">
           <div class="col-12 ml-auto adress">
@@ -204,14 +166,6 @@ if($conn->query($sql) == TRUE){
 
           </div>
         </div>
-            <!--Hints-->
-          <div class="row row-content ">
-                <div class="col-12 ml-auto Hints">
-                    <h3>*يجب ادخال كل البيانات المطلوبه و عدم ترك شىء فارغ </h3>
-                    <h6 class="warning"><span>*</span>كل المستندات المطلوب رفعها يجب ان تكون صوره من ماسح ضوئى و واضحه حتى لا يتم رفض الطلب</h6>
-                </div>
-              </div>
-            </div>
   <!-- start of user input-->
               <div class="col-12 col-md-9">
                   <form  method="post">

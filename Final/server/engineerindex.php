@@ -46,7 +46,7 @@ require 'db_connection.php';
 $sql="UPDATE car_license
 SET motor_volume=$motorvol , motor_number=$motornumber , model_year=$vehiclemodel , vehicle_brand='$vehiclename' , model_name='$vehicletype' , chasse_number=$chaseenumber  , color='$color' , fuel_type='$fueltype' ,cylinder_number=$cylindernumber  WHERE request_number=$requestnumber";
 if ($conn->query($sql) === TRUE) {
-  header("Location: ../index.html");//will be a new page
+  header("Location: ../engineer/index.html");//will be a new page
 } else{
    echo "Error: " ."<br>"."<br>"."<br>". $sql . "<br>" ."<br>"."<br>"."<br>"."<br>"."<br>"."<br>"."<br>"."<br>"."<br>". $conn->error;
 //echo '<script type="text/javascript">

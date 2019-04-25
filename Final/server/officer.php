@@ -38,7 +38,7 @@ if($PLicenseID==""){
   VALUES ('$violationtype','$VPlace','$date','$Ltaken','$price','$CLicenseID' )";
 
 }else if($CLicenseID==""){
-$sql = "INSERT INTO pl_violation (VType,VPlace,VDate,license_taken,price,PL_id)
+$sql = "INSERT INTO pl_violations (VType,VPlace,VDate,license_taken,price,PL_id)
 VALUES ('$violationtype','$VPlace','$date','$Ltaken','$price','$PLicenseID' )";
 }
 
@@ -47,7 +47,7 @@ if ($conn->query($sql) === TRUE ) {
 
   echo '<script type="text/javascript">
   alert("تم تسجيل المخالفه بنجاح");
-  location="../server/index.html";
+  location="../index.html";
   </script>';
 
 } else{
