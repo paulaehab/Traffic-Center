@@ -1,10 +1,4 @@
-<!DOCTYPE html>
-//to test my code ,should be erased
-<html lang="ar" dir="rtl">
-<head>
-  <meta charset="utf-8">
-</head>
-<body>
+
 
 <?php
 // require the file of db connection first
@@ -45,18 +39,16 @@ require 'db_connection.php';
 
 
 
-$sql = "INSERT INTO car_information (vehicle_brand, model_name, model_year,chasse_number,motor_number,motor_volume,cylinder_number,color,fuel_type,check_up_date,request_number)
-VALUES ('$vehiclename', '$vehicletype', '$vehiclemodel','$chaseenumber','$motornumber','$motorvol','$cylindernumber','$color','$fueltype','123','$requestnumber')";
+//$sql = "INSERT INTO car_information (vehicle_brand, model_name, model_year,chasse_number,motor_number,motor_volume,cylinder_number,color,fuel_type,check_up_date,request_number)
+//VALUES ('$vehiclename', '$vehicletype', '$vehiclemodel','$chaseenumber','$motornumber','$motorvol','$cylindernumber','$color','$fueltype','123','$requestnumber')";
 
 
-//$sql="UPDATE car_information
-//SET motor_volume=$motorvol,motor_number=$motornumber,model_year=$vehiclemodel,model_name=$vehicletype,chasse_number=$chaseenumber,check_up_date=123,color=$color,fuel_type=$fueltype,cylinder_number=$cylindernumber,vehicle_brand=$vehiclename
-//WHERE license_number=$requestnumber";
-
+$sql="UPDATE car_license
+SET motor_volume=$motorvol , motor_number=$motornumber , model_year=$vehiclemodel , vehicle_brand='$vehiclename' , model_name='$vehicletype' , chasse_number=$chaseenumber  , color='$color' , fuel_type='$fueltype' ,cylinder_number=$cylindernumber  WHERE request_number=$requestnumber";
 if ($conn->query($sql) === TRUE) {
   header("Location: ../index.html");//will be a new page
 } else{
-   echo "Error: " . $sql . "<br>" . $conn->error;
+   echo "Error: " ."<br>"."<br>"."<br>". $sql . "<br>" ."<br>"."<br>"."<br>"."<br>"."<br>"."<br>"."<br>"."<br>"."<br>". $conn->error;
 //echo '<script type="text/javascript">
 //alert("احدى البيانات ناقصه ارجوك ملىء  جميع البيانات");
 //location="../engineer/index.html";
@@ -74,6 +66,3 @@ if ($conn->query($sql) === TRUE) {
 
 
  ?>
-
- </body>
- </html>

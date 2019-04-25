@@ -71,6 +71,11 @@ if($conn->query($sql) == TRUE){
 
 
 
+  }else{
+    echo '<script type="text/javascript">
+    alert("الرقم القومى خاطىء");
+    location="../index.html";
+    </script>';
   }
 
  ?>
@@ -275,7 +280,7 @@ if($conn->query($sql) == TRUE){
                                                    WHERE national_id=$national_id";
                                                    $query = mysqli_query($conn,$sql2);
                                                    // check if the conncetion with database is good and sql query is done with no problem
-                                                   if($conn->query($sql2) == TRUE){
+                                                   if($conn->query($sql2) === TRUE){
                                                      echo '<script type="text/javascript">
                                                      alert("لديك بالفعل رخصه مركبه خاصه");
                                                      location="../index.html";

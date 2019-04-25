@@ -58,6 +58,15 @@ if($_GET['idcard']=="1"){
 }else if($_GET['idcard']=="2"){
   $identfication="باسبور";
 }
+///10-get the trafiic location
+$trafficlocation;
+if($_GET['trafficlocation']=="1"){
+  $trafficlocation="مرور البساتين";
+}else if($_GET['trafficlocation']=="2"){
+  $trafficlocation="مرور المعادى";
+} else if($_GET['trafficlocation']=="3"){
+  $trafficlocation="مرور المعادى";
+}
 
 ///////////<----- make ready of personal licesne data----->////////////////////
 //1-get the current date as start date of license
@@ -77,8 +86,8 @@ $num = intval(strtok($startdate, '-')) ;
 //$file = addslashes(file_get_contents($_FILES["personalpicture"]));
 
 
-$sql = "INSERT INTO person (national_id, firstname, secondname,thirdname,fourthname,address,birthdate,religion,gender,nationality,birth_place)
-VALUES ('$nationalid', '$firstname', '$secondname','$thirdname','$fourthname','$address','$birthdate','$relegion','$gender','$identfication','$birthlocation')";
+$sql = "INSERT INTO person (national_id, firstname, secondname,thirdname,fourthname,address,birthdate,religion,gender,nationality,birth_place,traffic_location)
+VALUES ('$nationalid', '$firstname', '$secondname','$thirdname','$fourthname','$address','$birthdate','$relegion','$gender','$identfication','$birthlocation','$trafficlocation')";
 
 
 $sql2="INSERT INTO phone (phone_number,national_id)

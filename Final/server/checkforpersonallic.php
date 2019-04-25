@@ -14,6 +14,7 @@ require 'db_connection.php';
 
 
 $national_id=$_GET["nationalid"];
+
 $sql = "SELECT license_number
 		FROM personal_license
     WHERE national_id=$national_id";
@@ -21,19 +22,20 @@ $sql = "SELECT license_number
 $query = mysqli_query($conn,$sql);
 
 if($conn->query($sql) == TRUE){
-  $sql = "SELECT *
-      FROM person
+
+  $sql2 = "SELECT *
+  		FROM person
       WHERE national_id=$national_id";
 
   //this mysqli_query is built in function php to do sql query
-  $query = mysqli_query($conn,$sql);
+  $query = mysqli_query($conn,$sql2);
   // check if the conncetion with database is good and sql query is done with no problem
-  if($conn->query($sql) == TRUE){
+  if($conn->query($sql2) == TRUE){
   //mysqli_fetch_array-> this php built in function to retrive around all the return of sql query
     while ($row = mysqli_fetch_array($query))
-        {
-          //$row is take all the values
-          //*hint since the return is just on row so i will save all fields in variables
+    		{
+  				//$row is take all the values
+  				//*hint since the return is just on row so i will save all fields in variables
   $firstname= $row["firstname"];
   $secondname=$row["secondname"];
   $thirdname=$row["thirdname"];
@@ -51,28 +53,53 @@ if($conn->query($sql) == TRUE){
   $address=$row["address"];
   ////////
       }
-    }
-    /////////////// retrive the mobile number of the citizen
-    $sql = "SELECT *
-        FROM phone
-        WHERE national_id=$national_id";
-        $query = mysqli_query($conn,$sql);
-        // check if the conncetion with database is good and sql query is done with no problem
-        if($conn->query($sql) == TRUE){
-        //mysqli_fetch_array-> this php built in function to retrive around all the return of sql query
-          while ($row = mysqli_fetch_array($query))
-              {
+    }else{
+      /*echo '<script type="text/javascript">
+     alert("الرقم القومى خاطىء");
+      location="../index.html";
+      </script>';
+      */
+      echo "Error: " . $sql . "<br>" . $conn->error;
 
-        $phone=$row["phone_number"];
-            }
+    }
+  	/////////////// retrive the mobile number of the citizen
+  	$sql3 = "SELECT *
+  			FROM phone
+  	    WHERE national_id=$national_id";
+  			$query = mysqli_query($conn,$sql3);
+  			// check if the conncetion with database is good and sql query is done with no problem
+  			if($conn->query($sql3) == TRUE){
+  			//mysqli_fetch_array-> this php built in function to retrive around all the return of sql query
+  			  while ($row = mysqli_fetch_array($query))
+  			  		{
+
+  			$phone=$row["phone_number"];
+  			    }
+  			  }else{
+            /*echo '<script type="text/javascript">
+           alert("الرقم القومى خاطىء");
+            location="../index.html";
+            </script>';
+            */
+            echo "Error: " . $sql . "<br>" . $conn->error;
+
           }
 
 
 
 
+  }else{
+    /*echo '<script type="text/javascript">
+   alert("الرقم القومى خاطىء");
+    location="../index.html";
+    </script>';
+    */
+    echo "Error: " . $sql . "<br>" . $conn->error;
+
   }
 
-?>
+ ?>
+
 
   <html lang="ar" dir="rtl">
   <head>
@@ -258,46 +285,24 @@ if($conn->query($sql) == TRUE){
  																		 <input type="text" class="form-control" id="nationalid" name="nationalid"  value=<?php echo " $phone"; ?> disabled >
  																 </div>
  														 </div>
+                             <!--licensetype-->
+                                   <div class="form-group row">
+ <label  class="col-12 col-md-2 col-form-label">نوع الترخيص  </label>
+                       <div class="btn-group ">
+                       <select name="licensetype">
+       <button type="button" class="btn  dropdown-toggle dropdown-toggle-split " data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
 
-                                                         <!--Traffic location-->
+                           </button>
+                     <div class="dropdown-menu">
 
-                                                         <div class="form-group row">
-                                                             <label  class="col-12 col-md-2 col-form-label">وحده الترخيص  </label>
-                                                             <div class="btn-group ">
-                                                                 <select name="trafficlocation">
-                                                       <button type="button" class="btn  dropdown-toggle dropdown-toggle-split " data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                       <option value="1" class="dropdown-item">خاصه </option>
+                           <option  value="2" class="dropdown-item" >درجه اولى </option>
+                           <option  value="3" class="dropdown-item" >درجه ثانيه </option>
 
-                                                       </button>
-                                                           <div class="dropdown-menu">
-
-                                                       <option value="1" class="dropdown-item">البساتين </option>
-                                                       <option  value="2" class="dropdown-item" >المعادى </option>
-                                                       <option  value="2" class="dropdown-item" >حلوان </option>
-                                                       </div>
-                                                       </select>
-                                                              </div>
-                                                         </div>
-                                                         <!--licensetype-->
-                                                               <div class="form-group row">
-                             <label  class="col-12 col-md-2 col-form-label">نوع الترخيص  </label>
-                                                   <div class="btn-group ">
-                                                   <select name="licensetype">
-                                   <button type="button" class="btn  dropdown-toggle dropdown-toggle-split " data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-
-                                                       </button>
-                                                 <div class="dropdown-menu">
-
-                                                   <option value="1" class="dropdown-item">خاصه </option>
-                                                       <option  value="2" class="dropdown-item" >درجه اولى </option>
-                                                       <option  value="2" class="dropdown-item" >درجه ثانيه </option>
-
-                                                   </div>
-                                                       </select>
-                                                        </div>
-                                                       </div>
-
-
-
+                       </div>
+                           </select>
+                            </div>
+                           </div>
 
                                       <div class="offset-md-2 col-md-10">
                                           <button type="submit"  class="btn btn-primary" name="submit" >ارسال </button>
@@ -308,59 +313,47 @@ if($conn->query($sql) == TRUE){
                                              if(isset($_POST["submit"]))
                                              {
                                                $sql2 = "SELECT license_number
-                                               		FROM car_license
+                                                  FROM car_license
                                                    WHERE national_id=$national_id";
                                                    $query = mysqli_query($conn,$sql2);
                                                    // check if the conncetion with database is good and sql query is done with no problem
                                                    if($conn->query($sql2) === TRUE){
-
                                                      echo '<script type="text/javascript">
-                                                     alert("لديك بالفعل رخصه شخصيه");
+                                                     alert("لديك بالفعل رخصه مركبه خاصه");
                                                      location="../index.html";
                                                      </script>';
                                                    }else{
 
-
-                                                   $startdate= date("Y-m-d");
+                                               $startdate= date("Y-m-d");
 
                                                //2-add 3 years to the current year to make it as endyear
                                                $num = intval(strtok($startdate, '-')) ;
                                                 $enddate=$num+3;
                                                 $enddate=$enddate.'-'.date("m").('-').date("d");
-
-                                                ///10-get the trafiic location
-                                                $trafficlocation;
-                                                if($_POST['trafficlocation']=="1"){
-                                                  $trafficlocation="مرور البساتين";
-                                                }else if($_POST['trafficlocation']=="2"){
-                                                  $trafficlocation="مرور المعادى";
-                                                } else if($_POST['trafficlocation']=="3"){
-                                                  $trafficlocation="مرور المعادى";
-                                                }
-                                                //11- get the licnesce type
+                                                /// request number
+                                                $requestnumber=rand(0,10);
                                                 $licensetype;
-                                                if($_POST['licensetype']=="1"){
+                                                if($_POST['licensetype']==="1"){
                                                   $licensetype="خاصه";
-                                                }else if($_POST['licensetype']=="2"){
+                                                }else if($_POST['licensetype']==="2"){
                                                   $licensetype="درجه اولى";
-                                                } else if($_POST['licensetype']=="3"){
+                                                } else if($_POST['licensetype']==="3"){
                                                   $licensetype="درجه ثانيه ";
                                                 }
-                                                $requestnumber=rand(0,3);
 
 
-                                                $sql3="INSERT INTO car_license(release_date,end_date,license_type,traffic_location,national_id,request_number)
-                                                VALUES('$startdate','$enddate','$licensetype','$trafficlocation','$national_id','$requestnumber')";
+                                                $sql2="INSERT INTO car_license(release_date,end_date,national_id,request_number,license_type)
+                                                VALUES('$startdate','$enddate','$national_id','$requestnumber','$licensetype')";
 
 
-                                                if ($conn->query($sql3) === TRUE ) {
+                                                if ($conn->query($sql2) === TRUE ) {
 
                                               echo '<script type="text/javascript">
-                                              alert("تم انشاء رخصه مركبه بنجاح");
-                                              location="../index.html";
+                                              alert("تم انشاء رخصه قياده شخصيه بنجاح");
+                                              location=" ../index.html";
                                               </script>';
                                                 } else{
-                                                  echo "Error: " . $sql3 . "<br>" . $conn->error;
+                                                  echo "Error: " . $sql2 . "<br>" . $conn->error;
                                                 echo '<script type="text/javascript">
                                                 alert("احدى البيانات ناقصه ارجوك ملىء  جميع البيانات");
                                                 location="../personalLic.html";
@@ -376,7 +369,7 @@ if($conn->query($sql) == TRUE){
                                              ?>
                  </form>
                </div>
-
+                 </div>
 
 
 

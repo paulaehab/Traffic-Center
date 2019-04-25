@@ -86,45 +86,45 @@ $num = intval(strtok($startdate, '-')) ;
  $enddate=$num+3;
  $enddate=$enddate.'-'.date("m").('-').date("d");
 
-$requestnumber=rand(0,3);
+$requestnumber=rand(0,10);
 
 
 //$file = addslashes(file_get_contents($_FILES["personalpicture"]));
 
 
-$sql = "INSERT INTO person (national_id, firstname, secondname,thirdname,fourthname,address,birthdate,religion,gender,nationality,birth_place)
-VALUES ('$nationalid', '$firstname', '$secondname','$thirdname','$fourthname','$address','$birthdate','$relegion','$gender','$identfication','$birthlocation')";
+$sql = "INSERT INTO person (national_id, firstname, secondname,thirdname,fourthname,address,birthdate,religion,gender,nationality,birth_place,traffic_location)
+VALUES ('$nationalid', '$firstname', '$secondname','$thirdname','$fourthname','$address','$birthdate','$relegion','$gender','$identfication','$birthlocation','$trafficlocation')";
 
 $sql2 ="INSERT INTO phone (phone_number,national_id)
 VALUES('$mobile','$nationalid')";
 
-$sql3="INSERT INTO car_license(release_date,end_date,license_type,traffic_location,national_id,request_number)
-VALUES('$startdate','$enddate','$licensetype','$trafficlocation','$nationalid','$requestnumber')";
+$sql3="INSERT INTO car_license(release_date,end_date,license_type,national_id,request_number)
+VALUES('$startdate','$enddate','$licensetype','$nationalid','$requestnumber')";
 
 
-//$sql4 ="INSERT INTO car_information (request_number)
-//VALUES('$requestnumber')";
+$sql4 ="INSERT INTO car_information (request_number)
+VALUES('$requestnumber')";
 
 if ($conn->query($sql) === TRUE && $conn->query($sql2) === TRUE &&$conn->query($sql3) === TRUE) {
-/// after insertion of the carlicense i get the carLic number
+// after insertion of the carlicense i get the carLic number
 //by the same national id of the user how want to creat car licesne
-   //$sql4="SELECT license_number
-///   FROM car_license
-  /// WHERE national_id=$nationalid ";
-  /// $query = mysqli_query($conn,$sql4);
+   $sql4="SELECT license_number
+     FROM car_license
+   WHERE national_id=$nationalid ";
+   $query = mysqli_query($conn,$sql4);
 
-  /// if($conn->query($sql4) == TRUE){
-  ///   while ($row = mysqli_fetch_array($query))
-  // {
+   if($conn->query($sql4) == TRUE){
+    while ($row = mysqli_fetch_array($query))
+ {
 // here i get the carlicense number that i have inserted right now
-///   $license_number= $row["license_number"];
-////   }
- //}
+   $license_number= $row["license_number"];
+   }
+ }
  // here i want to add this car license in the forign key in car_information table
-   ///$sql5="INSERT INTO car_information (request_number)
-///VALUES('$license_number')";
+   $sql5="INSERT INTO car_information (license_number)
+VALUES('$license_number')";
 
-////$conn->query($sql5);
+$conn->query($sql5);
 
 
    header("Location: ./succescarlic.php?license_number=".$requestnumber);

@@ -46,7 +46,7 @@
               <a class="dropdown-item" href="./carViolations.html">استعلام عن المخلفات</a>
           </div>
         </li>
-      
+
 
       </ul>
     </div>
@@ -175,6 +175,24 @@
                </select>
                          </div>
                     </div>
+                    <!--Traffic location-->
+
+                    <div class="form-group row">
+                        <label  class="col-12 col-md-2 col-form-label">وحده الترخيص  </label>
+                        <div class="btn-group ">
+                            <select name="trafficlocation">
+                  <button type="button" class="btn  dropdown-toggle dropdown-toggle-split " data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+
+                  </button>
+                      <div class="dropdown-menu">
+
+                  <option value="1" class="dropdown-item">البساتين </option>
+                  <option  value="2" class="dropdown-item" >المعادى </option>
+                  <option  value="2" class="dropdown-item" >حلوان </option>
+                  </div>
+                  </select>
+                         </div>
+                    </div>
                     <!--identification types-->
 
                     <div class="form-group row">
@@ -191,9 +209,12 @@
                          </div>
                     </div>
 
+
                              <!--send button-->
 
-                            <input type="submit" name="insert" class="btn btn-primary">ارسال </input>
+                     <div class="offset-md-2 col-md-10">
+                       <button type="submit" class="btn btn-primary">ارسال </button>
+                          </div>
 
       </form>
             </div>
